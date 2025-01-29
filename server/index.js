@@ -1,16 +1,16 @@
-import sequlize from './config.js';
-import userModel from './models/userModel.js';
-import orderModel from './models/orderModel.js';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import userRoutes from './routes/userRoutes.js'
 
-(async () => {
-    try {
-        await sequlize.authenticate();
-        console.log('Соединение с базой данных успешно установлено.')
+const app = express();
 
-        await sequlize.sync();
-        console.log('Модели синхронизированы с базой данных.')
+app.use(cors());
+app.use(bodyParser.json());
 
-    } catch (error) {
-        console.log('Ошибка подключения к базе данных:', error)
-    }
-})();
+app.use('/users', userRoutes);
+
+const port = process.env.PORT;
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`)
+})
