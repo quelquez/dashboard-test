@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import sequlize from '../config.js';
 import userModel from './userModel.js';
 
-const orderModel = sequlize.define('Order', {
+const orderModel = sequlize.define('order', {
     id:{
         type: DataTypes.INTEGER,
         autoIncrement: true,

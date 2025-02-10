@@ -6,7 +6,7 @@ class userController {
             const { page = 1, limit = 10} = req.query;
             const offset = (page - 1)*limit;
 
-            const users = await sequelize.query('SELET * FROM "users" LIMIT :limit OFFSET :offset',{
+            const users = await sequelize.query('SELECT * FROM "users" LIMIT :limit OFFSET :offset',{
                 replacements: {limit: Number(limit), offset: Number(offset)},
                 type: sequelize.QueryTypes.SELECT,
             });
